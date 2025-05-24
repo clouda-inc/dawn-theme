@@ -1,0 +1,53 @@
+.top-brands-section {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    text-align: center; /* Center the title */
+  }
+  
+  .top-brands__title {
+    margin-bottom: 25px;
+    /* You can inherit Dawn's heading styles or add your own */
+  }
+  
+  .top-brands__grid {
+    display: flex;
+    flex-wrap: wrap; /* Allow logos to wrap to the next line on smaller screens */
+    justify-content: center; /* Center logos in the row */
+    align-items: center; /* Vertically align logos if they have slightly different actual heights */
+    gap: 20px 30px; /* Vertical and horizontal gap between logos */
+    margin: 0 auto; /* Center the grid if it's narrower than page-width */
+  }
+  
+  .top-brands__item {
+    display: flex; /* Helps with alignment if you add other elements inside later */
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .top-brands__item img {
+    display: block; /* Removes extra space below image */
+    object-fit: contain; /* Ensures the entire logo is visible without cropping, respects aspect ratio */
+    /* max-height is set inline via Liquid based on section setting */
+    max-width: 100%; /* Ensures logo doesn't overflow its container */
+  }
+  
+  .top-brands__link {
+    display: block; /* Make the link area encompass the image */
+    transition: opacity 0.3s ease;
+  }
+  
+  .top-brands__link:hover {
+    opacity: 0.75; /* Slight hover effect */
+  }
+  
+  /* Optional: Adjustments for smaller screens if needed */
+  @media screen and (max-width: 749px) {
+    .top-brands__grid {
+      gap: 15px 20px; /* Smaller gap on mobile */
+    }
+  
+    .top-brands-section {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+  }
