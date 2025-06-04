@@ -1,111 +1,147 @@
-/* Section: Top Brands */
-.section-top-brands-outer {
-    padding-top: 30px; /* Adjust as needed */
-    padding-bottom: 10px; /* Adjust to give space before the next section, considering the separator */
+/* Outermost section wrapper - applies full-width background and vertical padding */
+section.section-top-brands {
+  background-color: #FAF7F0; /* Your specified light grey */
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+/* This is your div with class="top-brands-section page-width" */
+.top-brands-section.page-width {
+  text-align: center;
+  padding-right: 0;
+  padding-left: 0;
+  width: 92%;
+}
+
+.top-brands__title {
+  margin-bottom: 30px;
+  display: flex;
+  font-size: 24px;
+  font-weight: 600;
+  color: #341F1A;
+  position: relative; /* Added: for positioning the ::after pseudo-element */
+  padding-bottom: 6px;
+}
+
+.top-brands__title::after {
+  content: ''; /* Required for pseudo-elements */
+  display: block;
+  width: 73px; /* Your specified width */
+  height: 3px; /* Thickness of the underline - adjust if you want it thicker or thinner */
+  background-color: #F7CB47; /* Your specified color */
+  position: absolute;
+  left: 36px; /* Center horizontally */
+  transform: translateX(-50%); /* Fine-tune horizontal centering */
+  bottom: 0; /* Position at the very bottom of the .top-brands__title's content box (including its padding-bottom) */
+}
+
+.top-brands__grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Center items in the grid */
+  align-items: flex-start;
+  gap: 20px 10px; /* Base gap: Row 20px, Column 30px */
+  margin-bottom: 35px;
+}
+
+.top-brands__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;  /* Fixed width for the item container (desktop/default) */
+  height: 150px; /* Fixed height for the item container */
+  background-color: #FFFFFF; /* Optional: white background for each item box */
+  box-sizing: border-box;
+}
+
+.top-brands__item img {
+  height: 150px;
+  width: 200px;
+  display: block;
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 1px;
+}
+
+.top-brands__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.3s ease;
+}
+
+.top-brands__link:hover {
+  opacity: 0.75;
+}
+
+/* Styles for the "no content" message */
+.top-brands__no-content-message {
+  padding: 20px;
+  border: 1px dashed #e0e0e0;
+  background-color: #FFFFFF;
+  color: #777;
+  margin-bottom: 35px;
+  text-align: center;
+}
+.top-brands__no-content-message p {
+  margin: 0;
+  font-size: 0.9em;
+}
+
+/* Separator line (purple line) */
+.top-brands__separator {
+  display: block;
+  height: 2px;
+  background-color: #6A0DAD; /* Your specified purple */
+  border: none;
+  margin-top: 0;
+  width: 100%;
+}
+
+/* --- Responsive adjustments --- */
+
+@media screen and (max-width: 768px) { /* Tablet breakpoint */
+  section.section-top-brands {
+    padding-top: 30px;
+    padding-bottom: 30px;
   }
-  
-  .top-brands-section .page-width {
-    max-width: 1200px; /* Or your theme's standard page width */
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 15px; /* Standard padding */
-    padding-right: 15px; /* Standard padding */
-  }
-  
+
   .top-brands__title {
-    text-align: center; /* As seen in the image (though it's left-aligned in the example text blocks above the logos) */
-    font-size: 24px; /* Adjust as needed */
-    font-weight: 600; /* Adjust as needed */
-    color: #333; /* Adjust as needed */
-    margin-bottom: 30px; /* Space between title and logos */
-    text-transform: uppercase; /* Common for such titles, but optional */
+    font-size: 20px;
+    margin-bottom: 20px;
   }
-  
+
   .top-brands__grid {
-    display: flex;
-    flex-wrap: wrap; /* Allows logos to wrap on smaller screens if needed */
-    justify-content: space-around; /* Distributes space around items. Use 'space-between' if you want items flush to the edges */
-    align-items: center;
-    gap: 20px; /* Space between logos */
-    margin-bottom: 30px; /* Space between logos and the separator line */
+    gap: 15px 20px; /* Adjust gap for tablet */
+    margin-bottom: 25px;
   }
-  
+  /* .top-brands__item width (200px) and height (150px) are inherited from base
+     The number of items per row will depend on how many 200px items fit.
+  */
+
+  .top-brands__no-content-message {
+    margin-bottom: 25px;
+  }
+}
+
+@media screen and (max-width: 480px) { /* Mobile breakpoint */
+  section.section-top-brands {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .top-brands__grid {
+    gap: 15px 0; /* Row gap 15px, no column gap needed if items are full width */
+    /* justify-content: center; is inherited, which is fine */
+  }
+
   .top-brands__item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* Each item will take up space based on its content (image width)
-       or you can set a flex-basis if you want more uniform columns */
-    /* For 6 logos as in the image, they will naturally space out.
-       You might want to add min-width or max-width if designs vary wildly */
+    margin: auto;
+    width: 200px;/* MODIFIED: Make item take full available width */
+    /* height: 150px; is inherited. You can adjust if 150px is too tall for mobile full-width items: */
+    /* height: 120px; */
   }
-  
-  .top-brands__link {
-    display: block; /* Ensures the link takes up the image block */
-    text-decoration: none;
-  }
-  
-  .top-brands__image {
-    display: block;
-    max-height: 60px; /* Adjust based on your logos' aspect ratios and desired visual height */
-    width: auto; /* Let width adjust based on the height to maintain aspect ratio */
-    /* The schema allows setting explicit width, which will be applied directly.
-       This max-height ensures taller logos are constrained. */
-    object-fit: contain; /* Ensures the whole logo is visible without cropping, scaled down if necessary */
-  }
-  
-  .top-brands__placeholder svg {
-    width: 100px; /* Placeholder size */
-    height: 60px; /* Placeholder size */
-    fill: #ccc;
-  }
-  
-  .top-brands__separator {
-    display: block;
-    height: 2px; /* Thickness of the line */
-    background-color: #6A0DAD; /* Purple color - adjust the hex code to the exact purple */
-    border: none;
-    margin-top: 20px; /* Space above the separator */
-    margin-bottom: 20px; /* Space below the separator, before the next section */
-    width: 100%; /* Full width separator */
-  }
-  
-  /* Responsive adjustments (optional, but recommended) */
-  @media (max-width: 768px) {
-    .top-brands__title {
-      font-size: 20px;
-      margin-bottom: 20px;
-    }
-  
-    .top-brands__grid {
-      gap: 15px;
-      /* You might want to change justify-content or have fewer items per row */
-      /* For example, to stack them or have 3 per row:
-      justify-content: center;
-      */
-    }
-  
-    .top-brands__item {
-      /* If you want, for example, 3 items per row on mobile */
-      /* flex-basis: calc(33.333% - 10px); */
-    }
-  
-    .top-brands__image {
-      max-height: 50px; /* Slightly smaller logos on mobile */
-    }
-  
-    .top-brands__separator {
-      margin-top: 15px;
-      margin-bottom: 15px;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .top-brands__item {
-      /* For example, 2 items per row on very small screens */
-      /* flex-basis: calc(50% - 10px); */
-    }
-     .top-brands__image {
-      max-height: 40px; /* Even smaller logos */
-    }
-  }
+}

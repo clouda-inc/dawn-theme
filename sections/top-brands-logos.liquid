@@ -1,102 +1,107 @@
+{% comment %}
+  Section for displaying Top Brand Logos
+{% endcomment %}
+
 {{ 'section-top-brands.css' | asset_url | stylesheet_tag }}
 
-<div class="top-brands-section" data-section-id="{{ section.id }}" data-section-type="top-brands">
-  <div class="page-width">
-    {% if section.settings.title != blank %}
-      <h2 class="top-brands__title">{{ section.settings.title | escape }}</h2>
-    {% endif %}
+<div class="top-brands-section page-width">
+  {% if section.settings.title != blank %}
+    <h2 class="top-brands__title title h2">
+      {{ section.settings.title | escape }}
+    </h2>
+  {% endif %}
 
-    {% if section.blocks.size > 0 %}
-      <div class="top-brands__grid">
-        {% for block in section.blocks %}
-          <div class="top-brands__item" {{ block.shopify_attributes }}>
+  {% if section.blocks.size > 0 %}
+    <div class="top-brands__grid">
+      {% for block in section.blocks %}
+        <div class="top-brands__item" {{ block.shopify_attributes }}>
+          {% if block.settings.logo_image != blank %}
             {% if block.settings.link != blank %}
               <a
                 href="{{ block.settings.link }}"
                 class="top-brands__link"
-                aria-label="{{ block.settings.image.alt | default: 'Brand logo' }}"
+                aria-label="{{ block.settings.logo_image.alt | default: 'Brand logo' | escape }}"
               >
             {% endif %}
-            {% if block.settings.image != blank %}
-              <img
-                class="top-brands__image"
-                src="{{ block.settings.image | image_url: width: 300 }}"
-                alt="{{ block.settings.image.alt | default: 'Brand logo' }}"
-                loading="lazy"
-                width="{{ block.settings.image_width | default: 150 }}"
-                height="{% if block.settings.image.height and block.settings.image_width %}{{ block.settings.image.height | times: block.settings.image_width | divided_by: block.settings.image.width }}{% else %}150{% endif %}"
-              >
-            {% else %}
-              {{ 'logo' | placeholder_svg_tag: 'placeholder-svg top-brands__placeholder' }}
-            {% endif %}
+
+            <img
+              src="{{ block.settings.logo_image | image_url: height: section.settings.logo_height }}"
+              alt="{{ block.settings.logo_image.alt | default: 'Brand logo' | escape }}"
+              loading="lazy"
+              height="{{ section.settings.logo_height }}"
+              width="{{ block.settings.logo_image.width | divided_by: block.settings.logo_image.height | times: section.settings.logo_height | round }}"
+              style="max-height: {{ section.settings.logo_height }}px;"
+            >
+
             {% if block.settings.link != blank %}
               </a>
             {% endif %}
-          </div>
-        {% endfor %}
-      </div>
+          {% else %}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    {% if section.settings.title != blank %}
+      <p>{{ 'onboarding.no_content' | t }}</p>
+      {% comment %} General "no content" message, or you can customize {% endcomment %}
     {% endif %}
-
-    {% if section.blocks.size == 0 %}
-      <p class="top-brands__no-blocks-message">No brands to display.</p>
-    {% endif %}
-
-    <hr class="top-brands__separator">
-  </div>
+  {% endif %}
 </div>
 
 {% schema %}
 {
-  "name": "Top Brands",
+  "name": "Top Brands Logos",
   "tag": "section",
-  "class": "section-top-brands-outer",
+  "class": "section section-top-brands",
   "settings": [
     {
       "type": "text",
       "id": "title",
       "label": "Heading",
       "default": "Top Brands"
+    },
+    {
+      "type": "range",
+      "id": "logo_height",
+      "min": 30,
+      "max": 250,
+      "step": 5,
+      "unit": "px",
+      "label": "Logo Max Height",
+      "default": 60
     }
   ],
   "blocks": [
     {
-      "type": "brand_image",
-      "name": "Brand",
+      "type": "brand_logo",
+      "name": "Brand Logo",
       "settings": [
         {
           "type": "image_picker",
-          "id": "image",
-          "label": "Image"
+          "id": "logo_image",
+          "label": "Logo Image"
         },
         {
           "type": "url",
           "id": "link",
-          "label": "Link",
-          "info": "Optional: Link to a collection or brand page."
-        },
-        {
-          "type": "range",
-          "id": "image_width",
-          "min": 50,
-          "max": 250,
-          "step": 10,
-          "unit": "px",
-          "label": "Logo width",
-          "default": 150
+          "label": "Link (Optional)",
+          "info": "Link the logo to a specific URL (e.g., a collection or brand page)."
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Top Brands",
+      "name": "Top Brands Logos",
       "blocks": [
-        { "type": "brand_image" },
-        { "type": "brand_image" },
-        { "type": "brand_image" },
-        { "type": "brand_image" },
-        { "type": "brand_image" },
-        { "type": "brand_image" }
+        { "type": "brand_logo" },
+        { "type": "brand_logo" },
+        { "type": "brand_logo" },
+        { "type": "brand_logo" },
+        { "type": "brand_logo" },
+        { "type": "brand_logo" }
       ]
     }
   ]
