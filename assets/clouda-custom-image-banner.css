@@ -1,0 +1,276 @@
+/* 
+ * Clouda Custom Image Banner CSS
+ * File: assets/clouda-custom-image-banner.css
+ * This file provides additional styling for the custom image banner section
+ */
+
+/* Main Banner Container */
+.clouda-custom-banner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .clouda-banner-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+  
+  /* Background Image Styling */
+  .clouda-banner-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+  }
+  
+  .clouda-banner-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .clouda-custom-banner:hover .clouda-banner-image img {
+    transform: scale(1.05);
+  }
+  
+  /* Content Overlay */
+  .clouda-banner-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 60px 0;
+    box-sizing: border-box;
+  }
+  
+  .clouda-banner-text {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    border-radius: 12px;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+  }
+  
+  .clouda-banner-text:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  }
+  
+  /* Typography */
+  .clouda-main-heading {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.2;
+    margin: 0 0 16px 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: fadeInUp 0.8s ease-out;
+  }
+  
+  .clouda-sub-heading {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.5;
+    margin: 0 0 24px 0;
+    opacity: 0.9;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+  }
+  
+  /* Button Styling */
+  .clouda-button-wrapper {
+    margin-top: 30px;
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+  }
+  
+  .clouda-banner-button {
+    display: inline-block;
+    padding: 14px 28px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .clouda-banner-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+  }
+  
+  .clouda-banner-button:hover::before {
+    left: 100%;
+  }
+  
+  .clouda-banner-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  }
+  
+  .clouda-banner-button:active {
+    transform: translateY(-1px);
+  }
+  
+  /* Animation Keyframes */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .clouda-banner-container {
+      padding: 0 15px;
+    }
+    
+    .clouda-banner-text {
+      padding: 35px 25px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .clouda-banner-container {
+      padding: 0 15px;
+    }
+    
+    .clouda-banner-content {
+      padding: 40px 0;
+    }
+    
+    .clouda-banner-text {
+      padding: 30px 20px;
+      margin: 0 10px;
+    }
+    
+    .clouda-banner-button {
+      padding: 12px 24px;
+      font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .clouda-banner-container {
+      padding: 0 10px;
+    }
+    
+    .clouda-banner-text {
+      padding: 25px 15px;
+      margin: 0 5px;
+    }
+    
+    .clouda-banner-button {
+      padding: 10px 20px;
+      font-size: 13px;
+      width: 100%;
+      text-align: center;
+    }
+    
+    .clouda-button-wrapper {
+      margin-top: 20px;
+    }
+  }
+  
+  /* Accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    .clouda-banner-image img,
+    .clouda-banner-text,
+    .clouda-banner-button,
+    .clouda-main-heading,
+    .clouda-sub-heading {
+      transition: none;
+      animation: none;
+    }
+    
+    .clouda-custom-banner:hover .clouda-banner-image img {
+      transform: none;
+    }
+  }
+  
+  /* Print Styles */
+  @media print {
+    .clouda-custom-banner {
+      background: white !important;
+      color: black !important;
+    }
+    
+    .clouda-banner-text {
+      background: white !important;
+      color: black !important;
+      border: 1px solid black;
+    }
+    
+    .clouda-main-heading,
+    .clouda-sub-heading {
+      color: black !important;
+      text-shadow: none !important;
+    }
+    
+    .clouda-banner-button {
+      background: white !important;
+      color: black !important;
+      border: 2px solid black !important;
+    }
+  }
+  
+  /* High Contrast Mode */
+  @media (prefers-contrast: high) {
+    .clouda-banner-text {
+      background: rgba(0, 0, 0, 0.9);
+      border: 2px solid white;
+    }
+    
+    .clouda-main-heading,
+    .clouda-sub-heading {
+      color: white;
+    }
+    
+    .clouda-banner-button {
+      border: 2px solid white;
+    }
+  }
