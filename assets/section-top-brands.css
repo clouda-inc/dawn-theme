@@ -1,6 +1,6 @@
 /* Outermost section wrapper - applies full-width background and vertical padding */
 section.section-top-brands {
-  background-color: #FAF7F0; /* Your specified light grey */
+  background-color: var(--theme-based-background-color-primary); /* Your specified light grey */
   padding-top: 40px;
   padding-bottom: 40px;
 }
