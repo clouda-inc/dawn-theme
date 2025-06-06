@@ -245,6 +245,35 @@
         "logo_height": 60
       }
     },
+    "clouda_image_banner_NcmWrg": {
+      "type": "clouda-image-banner",
+      "name": "Clouda Custom Image Banner",
+      "settings": {
+        "banner_image": "shopify://shop_images/fashion-model-walks-down-city-street.jpg",
+        "main_heading": "Welcome to Our Store",
+        "sub_heading": "Discover amazing products and exceptional service",
+        "button_text": "Shop Now",
+        "button_link": "",
+        "show_overlay": true,
+        "text_alignment": "center",
+        "banner_height": 500,
+        "mobile_height": 400,
+        "background_color": "#f8f8f8",
+        "overlay_color": "rgba(0,0,0,0.5)",
+        "main_heading_color": "#ffffff",
+        "sub_heading_color": "#ffffff",
+        "button_bg_color": "#ffffff",
+        "button_text_color": "#000000",
+        "button_hover_bg": "transparent",
+        "button_hover_text": "#ffffff",
+        "main_heading_size": 48,
+        "sub_heading_size": 18,
+        "mobile_main_size": 32,
+        "mobile_sub_size": 16,
+        "main_heading_weight": "bold",
+        "sub_heading_weight": "normal"
+      }
+    },
     "video": {
       "type": "video",
       "settings": {
@@ -319,6 +348,7 @@
     "featured_collection",
     "collage",
     "top_brands_logos_3NXTCq",
+    "clouda_image_banner_NcmWrg",
     "video",
     "multicolumn"
   ]
