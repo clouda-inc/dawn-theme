@@ -212,7 +212,6 @@
     }
   }
 </style>
-
 {% schema %}
   {
     "name": "Clouda Image Banner",
@@ -232,6 +231,7 @@
         "info": "Optional: Different image for mobile devices. Recommended size: 768x600px"
       },
       {
+        "type": "text",
         "id": "main_heading",
         "label": "Main Heading",
         "default": "Welcome to Our Store"
@@ -243,30 +243,10 @@
         "default": "Discover amazing products and exceptional service"
       },
       {
-        "id": "main_heading",
-        "label": "Main Heading",
-        "default": "Welcome to Our Store"
-      },
-      {
-        "id": "sub_heading",
-        "label": "Sub Heading",
-        "default": "Discover amazing products and exceptional service"
-      },
-      {
         "type": "text",
         "id": "button_text",
         "label": "Button Text",
         "default": "Shop Now"
-      },
-      {
-        "type": "text",
-        "id": "button_text",
-        "label": "Button Text",
-        "default": "Shop Now"
-      },
-      {
-        "id": "button_link",
-        "label": "Button Link"
       },
       {
         "type": "url",
@@ -279,9 +259,6 @@
         "label": "Show Text Overlay Background",
         "default": true,
         "info": "Toggle the background overlay behind text content"
-      },
-      {
-        "content": "Design Settings"
       },
       {
         "type": "header",
@@ -483,3 +460,274 @@
     ]
   }
 {% endschema %}
+
+{% comment %} {% schema %}
+    {
+      "name": "Clouda Image Banner",
+      "tag": "section",
+      "class": "clouda-custom-banner-section",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "banner_image",
+          "label": "Banner Image",
+          "info": "Recommended size: 1920x600px"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile Banner Image",
+          "info": "Optional: Different image for mobile devices. Recommended size: 768x600px"
+        },
+        {
+          "id": "main_heading",
+          "label": "Main Heading",
+          "default": "Welcome to Our Store"
+        },
+        {
+          "type": "textarea",
+          "id": "sub_heading",
+          "label": "Sub Heading",
+          "default": "Discover amazing products and exceptional service"
+        },
+        {
+          "id": "main_heading",
+          "label": "Main Heading",
+          "default": "Welcome to Our Store"
+        },
+        {
+          "id": "sub_heading",
+          "label": "Sub Heading",
+          "default": "Discover amazing products and exceptional service"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Shop Now"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Shop Now"
+        },
+        {
+          "id": "button_link",
+          "label": "Button Link"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_overlay",
+          "label": "Show Text Overlay Background",
+          "default": true,
+          "info": "Toggle the background overlay behind text content"
+        },
+        {
+          "content": "Design Settings"
+        },
+        {
+          "type": "header",
+          "content": "Design Settings"
+        },
+        {
+          "type": "select",
+          "id": "text_alignment",
+          "label": "Text Alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "range",
+          "id": "banner_height",
+          "label": "Banner Height (Desktop)",
+          "min": 300,
+          "max": 800,
+          "step": 50,
+          "default": 500,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "mobile_height",
+          "label": "Banner Height (Mobile)",
+          "min": 250,
+          "max": 600,
+          "step": 50,
+          "default": 400,
+          "unit": "px"
+        },
+        {
+          "type": "header",
+          "content": "Color Settings"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background Color",
+          "default": "#f8f8f8"
+        },
+        {
+          "type": "color",
+          "id": "overlay_color",
+          "label": "Text Overlay Background",
+          "default": "rgba(0,0,0,0.5)"
+        },
+        {
+          "type": "color",
+          "id": "main_heading_color",
+          "label": "Main Heading Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "sub_heading_color",
+          "label": "Sub Heading Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "button_bg_color",
+          "label": "Button Background Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "button_text_color",
+          "label": "Button Text Color",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "button_hover_bg",
+          "label": "Button Hover Background",
+          "default": "transparent"
+        },
+        {
+          "type": "color",
+          "id": "button_hover_text",
+          "label": "Button Hover Text Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "header",
+          "content": "Typography Settings"
+        },
+        {
+          "type": "range",
+          "id": "main_heading_size",
+          "label": "Main Heading Size (Desktop)",
+          "min": 24,
+          "max": 72,
+          "step": 4,
+          "default": 48,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "sub_heading_size",
+          "label": "Sub Heading Size (Desktop)",
+          "min": 14,
+          "max": 32,
+          "step": 2,
+          "default": 18,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "mobile_main_size",
+          "label": "Main Heading Size (Mobile)",
+          "min": 18,
+          "max": 48,
+          "step": 2,
+          "default": 32,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "mobile_sub_size",
+          "label": "Sub Heading Size (Mobile)",
+          "min": 12,
+          "max": 24,
+          "step": 2,
+          "default": 16,
+          "unit": "px"
+        },
+        {
+          "type": "select",
+          "id": "main_heading_weight",
+          "label": "Main Heading Font Weight",
+          "options": [
+            {
+              "value": "normal",
+              "label": "Normal"
+            },
+            {
+              "value": "bold",
+              "label": "Bold"
+            },
+            {
+              "value": "600",
+              "label": "Semi Bold"
+            },
+            {
+              "value": "700",
+              "label": "Bold"
+            },
+            {
+              "value": "800",
+              "label": "Extra Bold"
+            }
+          ],
+          "default": "bold"
+        },
+        {
+          "type": "select",
+          "id": "sub_heading_weight",
+          "label": "Sub Heading Font Weight",
+          "options": [
+            {
+              "value": "normal",
+              "label": "Normal"
+            },
+            {
+              "value": "500",
+              "label": "Medium"
+            },
+            {
+              "value": "600",
+              "label": "Semi Bold"
+            },
+            {
+              "value": "bold",
+              "label": "Bold"
+            }
+          ],
+          "default": "normal"
+        }
+      ],
+      "presets": [
+        {
+          "name": "Clouda Custom Image Banner"
+        }
+      ]
+    }
+{% endschema %} {% endcomment %}
