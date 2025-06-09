@@ -1,8 +1,8 @@
 /* Outermost section wrapper - applies full-width background and vertical padding */
 section.section-top-brands {
   background-color: var(--theme-based-background-color-primary); /* Your specified light grey */
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 /* This is your div with class="top-brands-section page-width" */
@@ -41,7 +41,7 @@ section.section-top-brands {
   justify-content: space-between; /* Center items in the grid */
   align-items: flex-start;
   gap: 20px 10px; /* Base gap: Row 20px, Column 30px */
-  margin-bottom: 35px;
+  /* margin-bottom: 35px; */
 }
 
 .top-brands__item {

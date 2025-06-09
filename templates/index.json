@@ -239,10 +239,11 @@
         "brand_logo_qxHPdf",
         "brand_logo_MmT3y4"
       ],
+      "custom_css": [],
       "name": "Top Brands Logos",
       "settings": {
         "title": "Top Brands",
-        "logo_height": 60
+        "logo_height": 250
       }
     },
     "clouda_image_banner_NcmWrg": {
