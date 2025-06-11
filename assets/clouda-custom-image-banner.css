@@ -11,7 +11,6 @@
     gap: 40px;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
   }
   
   .clouda-banner-container--image_right {
@@ -24,6 +23,7 @@
   }
   
   .clouda-banner-image img {
+    max-height: 400px;
     width: 100%;
     height: auto;
     display: block;
@@ -31,7 +31,7 @@
   }
   
   .clouda-banner-content {
-    flex: 1 1 50%;
+    flex: 1 1 33%;
     display: flex;
   }
   
@@ -85,7 +85,7 @@
     display: inline-block;
     background: var(--clouda-button-bg-color);
     color: var(--clouda-button-text-color);
-    padding: 12px 24px;
+    padding: 4px 16px;
     text-decoration: none;
     border-radius: 4px;
     font-weight: 600;
@@ -97,7 +97,7 @@
   .clouda-banner-button:hover {
     background: var(--clouda-button-hover-bg);
     color: var(--clouda-button-hover-text);
-    border-color: var(--clouda-button-hover-text);
+    /* border-color: var(--clouda-button-hover-text); */
   }
   
   /* Responsive Design */
