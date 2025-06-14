@@ -37,7 +37,8 @@ section.section-top-brands {
 
 .top-brands__grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr; */
   align-items: flex-start;
   gap: 20px 50px; /* Base gap: Row 20px, Column 30px */
   /* margin-bottom: 35px; */
@@ -100,14 +101,6 @@ section.section-top-brands {
   width: 100%;
 }
 
-/* --- Responsive adjustments --- */
-
-@media screen and (max-width: 1024px){
-  .top-brands__grid {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-  }
-}
-
 @media screen and (max-width: 768px) { /* Tablet breakpoint */
   section.section-top-brands {
     padding-top: 30px;
@@ -120,7 +113,6 @@ section.section-top-brands {
   }
 
   .top-brands__grid {
-    grid-template-columns: 1fr 1fr 1fr;
     gap: 15px 20px; /* Adjust gap for tablet */
     margin-bottom: 25px;
   }
@@ -140,7 +132,6 @@ section.section-top-brands {
   }
 
   .top-brands__grid {
-    grid-template-columns: 1fr ;
     gap: 15px 0; /* Row gap 15px, no column gap needed if items are full width */
     /* justify-content: center; is inherited, which is fine */
   }

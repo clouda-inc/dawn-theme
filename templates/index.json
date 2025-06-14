@@ -248,6 +248,46 @@
     },
     "clouda_image_banner_NcmWrg": {
       "type": "clouda-image-banner",
+      "blocks": {
+        "card_ntqqAA": {
+          "type": "card",
+          "settings": {
+            "heading": "Over 50 Years of Industry Experience",
+            "text": "<p>Since 1972, Air Specialists Worldwide has been committed to delivering the finest products and services possible for Midwestern businesses. With these many years of experience, we understand the ins and outs of many industries and can deliver the precise pneumatic solutions and automation you need.</p>",
+            "link": ""
+          }
+        },
+        "card_HBPKmL": {
+          "type": "card",
+          "settings": {
+            "heading": "Over 50 Years of Industry Experience",
+            "text": "<p>Since 1972, Air Specialists Worldwide has been committed to delivering the finest products and services possible for Midwestern businesses. With these many years of experience, we understand the ins and outs of many industries and can deliver the precise pneumatic solutions and automation you need.</p>",
+            "link": ""
+          }
+        },
+        "card_UtWXg4": {
+          "type": "card",
+          "settings": {
+            "heading": "Over 50 Years of Industry Experience",
+            "text": "<p>Since 1972, Air Specialists Worldwide has been committed to delivering the finest products and services possible for Midwestern businesses. With these many years of experience, we understand the ins and outs of many industries and can deliver the precise pneumatic solutions and automation you need.</p>",
+            "link": ""
+          }
+        },
+        "card_4AC88U": {
+          "type": "card",
+          "settings": {
+            "heading": "Over 50 Years of Industry Experience",
+            "text": "<p>Since 1972, Air Specialists Worldwide has been committed to delivering the finest products and services possible for Midwestern businesses. With these many years of experience, we understand the ins and outs of many industries and can deliver the precise pneumatic solutions and automation you need.</p>",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_ntqqAA",
+        "card_HBPKmL",
+        "card_UtWXg4",
+        "card_4AC88U"
+      ],
       "name": "Clouda Custom Image Banner",
       "settings": {
         "banner_image": "shopify://shop_images/fashion-model-walks-down-city-street.jpg",
@@ -258,6 +298,7 @@
         "button_link": "https://www.clouda.io",
         "layout_style": "image_right",
         "text_alignment": "center",
+        "info_heading": "Why Shop With Us?",
         "background_color": "#faf7f0",
         "main_heading_color": "#121212",
         "sub_heading_color": "#121212",
