@@ -11,8 +11,9 @@
   assign description = section.settings.sub_heading
   assign button_text = section.settings.button_text
   assign button_link = section.settings.button_link
-  assign text_align = section.settings.text_alignment
   assign layout_style = section.settings.layout_style
+  assign section_heading = section.settings.heading
+  assign background_color = section.settings.background_color
 -%}
 
 {{ 'clouda-custom-image-banner.css' | asset_url | stylesheet_tag }}
@@ -32,87 +33,391 @@
   --clouda-main-heading-weight: {{ section.settings.main_heading_weight | default: 'bold' }};
   --clouda-sub-heading-weight: {{ section.settings.sub_heading_weight | default: 'normal' }};
 }
+
+.info-cards-section {
+  background-color: {{ background_color }};
+  padding: 50px 0;
+}
+
+.info-cards__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.info-cards__heading {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 40px;
+}
+
+.info-cards__grid {
+  display: grid;
+  /* On desktop, create 4 equal-width columns */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.info-card {
+  background-color: #ffffff;
+  padding: 24px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  height: 100%;
+  /* Ensures all cards in a row have the same height */
+  box-sizing: border-box;
+}
+
+.info-card__link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+}
+
+.info-card__heading {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 15px;
+}
+
+.info-card__text {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333333;
+  margin: 0;
+}
+
+/* --- Responsive Adjustments --- */
+
+/* For Tablets */@media screen and (max-width: 990px) {
+  .info-cards__grid {
+    /* Switch to 2 columns */
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* For Mobile Phones */
+@media screen and (max-width: 749px) {
+  .info-cards__grid {
+    /* Stack into a single column */
+    grid-template-columns: 1fr;
+  }
+  .info-cards__heading {
+    font-size: 24px;
+  }
+}
 </style>
+<div>
+  <div class="clouda-custom-banner" id="{{ section_id }}">
+    <div class="clouda-banner-container clouda-banner-container--{{ layout_style }}">
+      {% if image %}
+        <div class="clouda-banner-image">
+          <picture>
+            {% if mobile_image %}
+              <source media="(max-width: 768px)" srcset="{{ mobile_image | img_url: '768x' }}">
+            {% endif %}
+            <img
+              src="{{ image | img_url: '1000x' }}"
+              alt="{{ image.alt | default: heading }}"
+              loading="lazy"
+              width="1000"
+              height="auto">
+          </picture>
+        </div>
+      {% endif %}
 
-<div class="clouda-custom-banner" id="{{ section_id }}">
-  <div class="clouda-banner-container clouda-banner-container--{{ layout_style }}">
-    {% if image %}
-      <div class="clouda-banner-image">
-        <picture>
-          {% if mobile_image %}
-            <source media="(max-width: 768px)" srcset="{{ mobile_image | img_url: '768x' }}">
+      <div class="clouda-banner-content">
+        <div class="clouda-banner-text">
+          {% if heading != blank %}
+            <h2 class="clouda-main-heading">{{ heading }}</h2>
           {% endif %}
-          <img
-            src="{{ image | img_url: '1000x' }}"
-            alt="{{ image.alt | default: heading }}"
-            loading="lazy"
-            width="1000"
-            height="auto">
-        </picture>
+
+          {% if description != blank %}
+            <p class="clouda-sub-heading">{{ description }}</p>
+          {% endif %}
+
+          {% if button_text != blank and button_link != blank %}
+            <div class="clouda-button-wrapper">
+              <a href="{{ button_link }}" class="clouda-banner-button">
+                {{ button_text }}
+              </a>
+            </div>
+          {% endif %}
+        </div>
       </div>
-    {% endif %}
+    </div>
+  </div>
+  <div class="info-cards-section">
+    <div class="info-cards__container">
+      {%- if section_heading != blank -%}
+        <h2 class="info-cards__heading">{{ section_heading | escape }}</h2>
+      {%- endif -%}
 
-    <div class="clouda-banner-content">
-      <div class="clouda-banner-text">
-        {% if heading != blank %}
-          <h2 class="clouda-main-heading">{{ heading }}</h2>
-        {% endif %}
+      {%- if section.blocks.size > 0 -%}
+        <div class="info-cards__grid">
+          {%- for block in section.blocks -%}
+            <div class="info-card" {{ block.shopify_attributes }}>
+              {%- liquid
+                assign card_heading = block.settings.heading
+                assign card_text = block.settings.text
+                assign card_link = block.settings.link
+              -%}
 
-        {% if description != blank %}
-          <p class="clouda-sub-heading">{{ description }}</p>
-        {% endif %}
+              {%- if card_link != blank -%}
+                <a href="{{ card_link }}" class="info-card__link">
+              {%- endif -%}
 
-        {% if button_text != blank and button_link != blank %}
-          <div class="clouda-button-wrapper">
-            <a href="{{ button_link }}" class="clouda-banner-button">
-              {{ button_text }}
-            </a>
-          </div>
-        {% endif %}
-      </div>
+              {%- if card_heading != blank -%}
+                <h3 class="info-card__heading">{{ card_heading | escape }}</h3>
+              {%- endif -%}
+
+              {%- if card_text != blank -%}
+                <div class="info-card__text">{{ card_text }}</div>
+              {%- endif -%}
+
+              {%- if card_link != blank -%}
+                </a>
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
     </div>
   </div>
 </div>
 
+{% comment %} {% schema %}
+    {
+      "name": "Clouda Image Banner",
+      "tag": "section",
+      "class": "clouda-custom-banner-section",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Content Settings"
+        },
+        {
+          "type": "image_picker",
+          "id": "banner_image",
+          "label": "Banner Image",
+          "info": "Recommended size: 1000x1000px"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile Banner Image (Optional)",
+          "info": "Use a different image for mobile if needed."
+        },
+        {
+          "type": "text",
+          "id": "main_heading",
+          "label": "Main Heading",
+          "default": "Welcome to Our Store"
+        },
+        {
+          "type": "textarea",
+          "id": "sub_heading",
+          "label": "Sub Heading",
+          "default": "Discover amazing products and exceptional service"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Shop Now"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        },
+        {
+          "type": "header",
+          "content": "Design & Layout"
+        },
+        {
+          "type": "select",
+          "id": "layout_style",
+          "label": "Layout Style (Desktop)",
+          "options": [
+            {
+              "value": "image_left",
+              "label": "Image on Left"
+            },
+            {
+              "value": "image_right",
+              "label": "Image on Right"
+            }
+          ],
+          "default": "image_left",
+          "info": "Position of the image relative to the text on desktop screens."
+        },
+        {
+          "type": "select",
+          "id": "text_alignment",
+          "label": "Text Alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "header",
+          "content": "Color Settings"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background Color",
+          "default": "#f8f8f8"
+        },
+        {
+          "type": "color",
+          "id": "main_heading_color",
+          "label": "Main Heading Color",
+          "default": "#111111"
+        },
+        {
+          "type": "color",
+          "id": "sub_heading_color",
+          "label": "Sub Heading Color",
+          "default": "#333333"
+        },
+        {
+          "type": "color",
+          "id": "button_bg_color",
+          "label": "Button Background Color",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "button_text_color",
+          "label": "Button Text Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "button_hover_bg",
+          "label": "Button Hover Background",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "button_hover_text",
+          "label": "Button Hover Text Color",
+          "default": "#000000"
+        },
+        {
+          "type": "header",
+          "content": "Typography Settings"
+        },
+        {
+          "type": "range",
+          "id": "main_heading_size",
+          "label": "Main Heading Size (Desktop)",
+          "min": 24,
+          "max": 72,
+          "step": 2,
+          "default": 42,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "sub_heading_size",
+          "label": "Sub Heading Size (Desktop)",
+          "min": 14,
+          "max": 32,
+          "step": 1,
+          "default": 18,
+          "unit": "px"
+        },
+        {
+          "type": "select",
+          "id": "main_heading_weight",
+          "label": "Main Heading Font Weight",
+          "options": [
+            {
+              "value": "normal",
+              "label": "Normal"
+            },
+            {
+              "value": "bold",
+              "label": "Bold"
+            }
+          ],
+          "default": "bold"
+        },
+        {
+          "type": "select",
+          "id": "sub_heading_weight",
+          "label": "Sub Heading Font Weight",
+          "options": [
+            {
+              "value": "normal",
+              "label": "Normal"
+            },
+            {
+              "value": "bold",
+              "label": "Bold"
+            }
+          ],
+          "default": "normal"
+        }
+      ],
+      "presets": [
+        {
+          "name": "Clouda Image Banner"
+        }
+      ]
+    }
+{% endschema %} {% endcomment %}
+
 {% schema %}
   {
-    "name": "Clouda Image Banner",
+    "name": "Clouda Banner & Cards",
     "tag": "section",
-    "class": "clouda-custom-banner-section",
+    "class": "clouda-banner-info-wrapper",
     "settings": [
-      {
-        "type": "header",
-        "content": "Content Settings"
-      },
       {
         "type": "image_picker",
         "id": "banner_image",
-        "label": "Banner Image",
-        "info": "Recommended size: 1000x1000px"
+        "label": "Banner Image"
       },
       {
         "type": "image_picker",
         "id": "mobile_image",
-        "label": "Mobile Banner Image (Optional)",
-        "info": "Use a different image for mobile if needed."
+        "label": "Mobile Banner Image"
       },
       {
         "type": "text",
         "id": "main_heading",
-        "label": "Main Heading",
+        "label": "Banner Heading",
         "default": "Welcome to Our Store"
       },
       {
         "type": "textarea",
         "id": "sub_heading",
-        "label": "Sub Heading",
-        "default": "Discover amazing products and exceptional service"
+        "label": "Banner Subheading"
       },
       {
         "type": "text",
         "id": "button_text",
-        "label": "Button Text",
-        "default": "Shop Now"
+        "label": "Button Text"
       },
       {
         "type": "url",
@@ -120,25 +425,20 @@
         "label": "Button Link"
       },
       {
-        "type": "header",
-        "content": "Design & Layout"
-      },
-      {
         "type": "select",
         "id": "layout_style",
-        "label": "Layout Style (Desktop)",
+        "label": "Layout Style",
         "options": [
           {
             "value": "image_left",
-            "label": "Image on Left"
+            "label": "Image Left"
           },
           {
             "value": "image_right",
-            "label": "Image on Right"
+            "label": "Image Right"
           }
         ],
-        "default": "image_left",
-        "info": "Position of the image relative to the text on desktop screens."
+        "default": "image_left"
       },
       {
         "type": "select",
@@ -161,14 +461,16 @@
         "default": "left"
       },
       {
-        "type": "header",
-        "content": "Color Settings"
+        "type": "text",
+        "id": "info_heading",
+        "label": "Info Cards Heading",
+        "default": "Why Shop With Us?"
       },
       {
         "type": "color",
         "id": "background_color",
         "label": "Background Color",
-        "default": "#f8f8f8"
+        "default": "#f5f5f5"
       },
       {
         "type": "color",
@@ -207,33 +509,27 @@
         "default": "#000000"
       },
       {
-        "type": "header",
-        "content": "Typography Settings"
-      },
-      {
         "type": "range",
         "id": "main_heading_size",
-        "label": "Main Heading Size (Desktop)",
+        "label": "Main Heading Size",
         "min": 24,
         "max": 72,
         "step": 2,
-        "default": 42,
-        "unit": "px"
+        "default": 42
       },
       {
         "type": "range",
         "id": "sub_heading_size",
-        "label": "Sub Heading Size (Desktop)",
+        "label": "Sub Heading Size",
         "min": 14,
         "max": 32,
         "step": 1,
-        "default": 18,
-        "unit": "px"
+        "default": 18
       },
       {
         "type": "select",
         "id": "main_heading_weight",
-        "label": "Main Heading Font Weight",
+        "label": "Main Heading Weight",
         "options": [
           {
             "value": "normal",
@@ -249,7 +545,7 @@
       {
         "type": "select",
         "id": "sub_heading_weight",
-        "label": "Sub Heading Font Weight",
+        "label": "Sub Heading Weight",
         "options": [
           {
             "value": "normal",
@@ -263,9 +559,46 @@
         "default": "normal"
       }
     ],
+    "blocks": [
+      {
+        "type": "card",
+        "name": "Info Card",
+        "settings": [
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Card Heading"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Card Text"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Card Link (Optional)"
+          }
+        ]
+      }
+    ],
     "presets": [
       {
-        "name": "Clouda Image Banner"
+        "name": "Banner with Info Cards",
+        "blocks": [
+          {
+            "type": "card"
+          },
+          {
+            "type": "card"
+          },
+          {
+            "type": "card"
+          },
+          {
+            "type": "card"
+          }
+        ]
       }
     ]
   }
