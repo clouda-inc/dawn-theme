@@ -36,13 +36,12 @@
 
 .info-cards-section {
   background-color: {{ background_color }};
-  padding: 50px 0;
 }
 
 .info-cards__container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  width: 92%;
 }
 
 .info-cards__heading {
@@ -191,200 +190,200 @@
 </div>
 
 {% comment %} {% schema %}
-    {
-      "name": "Clouda Image Banner",
-      "tag": "section",
-      "class": "clouda-custom-banner-section",
-      "settings": [
-        {
-          "type": "header",
-          "content": "Content Settings"
-        },
-        {
-          "type": "image_picker",
-          "id": "banner_image",
-          "label": "Banner Image",
-          "info": "Recommended size: 1000x1000px"
-        },
-        {
-          "type": "image_picker",
-          "id": "mobile_image",
-          "label": "Mobile Banner Image (Optional)",
-          "info": "Use a different image for mobile if needed."
-        },
-        {
-          "type": "text",
-          "id": "main_heading",
-          "label": "Main Heading",
-          "default": "Welcome to Our Store"
-        },
-        {
-          "type": "textarea",
-          "id": "sub_heading",
-          "label": "Sub Heading",
-          "default": "Discover amazing products and exceptional service"
-        },
-        {
-          "type": "text",
-          "id": "button_text",
-          "label": "Button Text",
-          "default": "Shop Now"
-        },
-        {
-          "type": "url",
-          "id": "button_link",
-          "label": "Button Link"
-        },
-        {
-          "type": "header",
-          "content": "Design & Layout"
-        },
-        {
-          "type": "select",
-          "id": "layout_style",
-          "label": "Layout Style (Desktop)",
-          "options": [
-            {
-              "value": "image_left",
-              "label": "Image on Left"
-            },
-            {
-              "value": "image_right",
-              "label": "Image on Right"
-            }
-          ],
-          "default": "image_left",
-          "info": "Position of the image relative to the text on desktop screens."
-        },
-        {
-          "type": "select",
-          "id": "text_alignment",
-          "label": "Text Alignment",
-          "options": [
-            {
-              "value": "left",
-              "label": "Left"
-            },
-            {
-              "value": "center",
-              "label": "Center"
-            },
-            {
-              "value": "right",
-              "label": "Right"
-            }
-          ],
-          "default": "left"
-        },
-        {
-          "type": "header",
-          "content": "Color Settings"
-        },
-        {
-          "type": "color",
-          "id": "background_color",
-          "label": "Background Color",
-          "default": "#f8f8f8"
-        },
-        {
-          "type": "color",
-          "id": "main_heading_color",
-          "label": "Main Heading Color",
-          "default": "#111111"
-        },
-        {
-          "type": "color",
-          "id": "sub_heading_color",
-          "label": "Sub Heading Color",
-          "default": "#333333"
-        },
-        {
-          "type": "color",
-          "id": "button_bg_color",
-          "label": "Button Background Color",
-          "default": "#000000"
-        },
-        {
-          "type": "color",
-          "id": "button_text_color",
-          "label": "Button Text Color",
-          "default": "#ffffff"
-        },
-        {
-          "type": "color",
-          "id": "button_hover_bg",
-          "label": "Button Hover Background",
-          "default": "#ffffff"
-        },
-        {
-          "type": "color",
-          "id": "button_hover_text",
-          "label": "Button Hover Text Color",
-          "default": "#000000"
-        },
-        {
-          "type": "header",
-          "content": "Typography Settings"
-        },
-        {
-          "type": "range",
-          "id": "main_heading_size",
-          "label": "Main Heading Size (Desktop)",
-          "min": 24,
-          "max": 72,
-          "step": 2,
-          "default": 42,
-          "unit": "px"
-        },
-        {
-          "type": "range",
-          "id": "sub_heading_size",
-          "label": "Sub Heading Size (Desktop)",
-          "min": 14,
-          "max": 32,
-          "step": 1,
-          "default": 18,
-          "unit": "px"
-        },
-        {
-          "type": "select",
-          "id": "main_heading_weight",
-          "label": "Main Heading Font Weight",
-          "options": [
-            {
-              "value": "normal",
-              "label": "Normal"
-            },
-            {
-              "value": "bold",
-              "label": "Bold"
-            }
-          ],
-          "default": "bold"
-        },
-        {
-          "type": "select",
-          "id": "sub_heading_weight",
-          "label": "Sub Heading Font Weight",
-          "options": [
-            {
-              "value": "normal",
-              "label": "Normal"
-            },
-            {
-              "value": "bold",
-              "label": "Bold"
-            }
-          ],
-          "default": "normal"
-        }
-      ],
-      "presets": [
-        {
-          "name": "Clouda Image Banner"
-        }
-      ]
-    }
+                  {
+                    "name": "Clouda Image Banner",
+                    "tag": "section",
+                    "class": "clouda-custom-banner-section",
+                    "settings": [
+                      {
+                        "type": "header",
+                        "content": "Content Settings"
+                      },
+                      {
+                        "type": "image_picker",
+                        "id": "banner_image",
+                        "label": "Banner Image",
+                        "info": "Recommended size: 1000x1000px"
+                      },
+                      {
+                        "type": "image_picker",
+                        "id": "mobile_image",
+                        "label": "Mobile Banner Image (Optional)",
+                        "info": "Use a different image for mobile if needed."
+                      },
+                      {
+                        "type": "text",
+                        "id": "main_heading",
+                        "label": "Main Heading",
+                        "default": "Welcome to Our Store"
+                      },
+                      {
+                        "type": "textarea",
+                        "id": "sub_heading",
+                        "label": "Sub Heading",
+                        "default": "Discover amazing products and exceptional service"
+                      },
+                      {
+                        "type": "text",
+                        "id": "button_text",
+                        "label": "Button Text",
+                        "default": "Shop Now"
+                      },
+                      {
+                        "type": "url",
+                        "id": "button_link",
+                        "label": "Button Link"
+                      },
+                      {
+                        "type": "header",
+                        "content": "Design & Layout"
+                      },
+                      {
+                        "type": "select",
+                        "id": "layout_style",
+                        "label": "Layout Style (Desktop)",
+                        "options": [
+                          {
+                            "value": "image_left",
+                            "label": "Image on Left"
+                          },
+                          {
+                            "value": "image_right",
+                            "label": "Image on Right"
+                          }
+                        ],
+                        "default": "image_left",
+                        "info": "Position of the image relative to the text on desktop screens."
+                      },
+                      {
+                        "type": "select",
+                        "id": "text_alignment",
+                        "label": "Text Alignment",
+                        "options": [
+                          {
+                            "value": "left",
+                            "label": "Left"
+                          },
+                          {
+                            "value": "center",
+                            "label": "Center"
+                          },
+                          {
+                            "value": "right",
+                            "label": "Right"
+                          }
+                        ],
+                        "default": "left"
+                      },
+                      {
+                        "type": "header",
+                        "content": "Color Settings"
+                      },
+                      {
+                        "type": "color",
+                        "id": "background_color",
+                        "label": "Background Color",
+                        "default": "#f8f8f8"
+                      },
+                      {
+                        "type": "color",
+                        "id": "main_heading_color",
+                        "label": "Main Heading Color",
+                        "default": "#111111"
+                      },
+                      {
+                        "type": "color",
+                        "id": "sub_heading_color",
+                        "label": "Sub Heading Color",
+                        "default": "#333333"
+                      },
+                      {
+                        "type": "color",
+                        "id": "button_bg_color",
+                        "label": "Button Background Color",
+                        "default": "#000000"
+                      },
+                      {
+                        "type": "color",
+                        "id": "button_text_color",
+                        "label": "Button Text Color",
+                        "default": "#ffffff"
+                      },
+                      {
+                        "type": "color",
+                        "id": "button_hover_bg",
+                        "label": "Button Hover Background",
+                        "default": "#ffffff"
+                      },
+                      {
+                        "type": "color",
+                        "id": "button_hover_text",
+                        "label": "Button Hover Text Color",
+                        "default": "#000000"
+                      },
+                      {
+                        "type": "header",
+                        "content": "Typography Settings"
+                      },
+                      {
+                        "type": "range",
+                        "id": "main_heading_size",
+                        "label": "Main Heading Size (Desktop)",
+                        "min": 24,
+                        "max": 72,
+                        "step": 2,
+                        "default": 42,
+                        "unit": "px"
+                      },
+                      {
+                        "type": "range",
+                        "id": "sub_heading_size",
+                        "label": "Sub Heading Size (Desktop)",
+                        "min": 14,
+                        "max": 32,
+                        "step": 1,
+                        "default": 18,
+                        "unit": "px"
+                      },
+                      {
+                        "type": "select",
+                        "id": "main_heading_weight",
+                        "label": "Main Heading Font Weight",
+                        "options": [
+                          {
+                            "value": "normal",
+                            "label": "Normal"
+                          },
+                          {
+                            "value": "bold",
+                            "label": "Bold"
+                          }
+                        ],
+                        "default": "bold"
+                      },
+                      {
+                        "type": "select",
+                        "id": "sub_heading_weight",
+                        "label": "Sub Heading Font Weight",
+                        "options": [
+                          {
+                            "value": "normal",
+                            "label": "Normal"
+                          },
+                          {
+                            "value": "bold",
+                            "label": "Bold"
+                          }
+                        ],
+                        "default": "normal"
+                      }
+                    ],
+                    "presets": [
+                      {
+                        "name": "Clouda Image Banner"
+                      }
+                    ]
+                  }
 {% endschema %} {% endcomment %}
 
 {% schema %}
